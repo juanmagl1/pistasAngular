@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SelectPistaComponent } from './pistas/select-pista/select-pista.component';
+import { HomeModule } from './home/home.module';
+import { NavbarModule } from './navbar/navbar.module';
+import { AuthModule } from './auth/auth.module';
+import { ListaPistasComponent } from './pistas/lista-pistas/lista-pistas.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,9 +16,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HomeModule,
+    AppRoutingModule,
+    NavbarModule,
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule { }

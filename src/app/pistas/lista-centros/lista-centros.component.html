@@ -1,21 +1,14 @@
 <div class="row">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Poblacion</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let centro of centros">
-          <td>{{centro.id}}</td>
-          <td>{{centro.nombre}}</td>
-          <td>{{centro.poblacion}}</td>
-          <td><a [routerLink]="['/edit','pokemon.id']" >edit</a> </td>
-        </tr>
-      </tbody>
-
-    </table>
+    <ul class="containerItem">
+      <li class="item" *ngFor="let item of centros">
+        <div class="containerImage">
+          <img class="imaage" src="" alt="">
+        </div>
+        <div class="containerDatosItem">
+          <h3 class="title">{{item.nombre}}</h3>
+          <p class="">{{item.poblacion}}</p>
+          <a [routerLink]="['/select',item.id]" >Reservar</a>
+        </div>
+      </li>
+    </ul>
   </div>

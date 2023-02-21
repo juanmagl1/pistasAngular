@@ -20,7 +20,19 @@ this.service.listadoCentros()
   }
 })
 }
+
 constructor(private service:CentrosService){}
- 
+ buscaCentros(query:string){
+  this.service.listadoCentrosNombre(query)
+  .subscribe({
+    next:(resp)=>{
+      this.centros=resp
+    },
+    error:(err)=>{
+      console.log(err);
+      
+    }
+  })
+ }
 
 }

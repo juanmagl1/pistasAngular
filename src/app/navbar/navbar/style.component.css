@@ -1,0 +1,37 @@
+.containerNav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.containerNav-Title{
+    color:#ffffff;
+}
+
+.containerLogo{
+    width: 150px;
+    height: 110px;
+    
+}
+
+.containerLogo-logo{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.login{
+    margin-right: 10px;
+}
+
+.dropdown-menu{
+    margin: 12px 0 0 0 !important;
+}
+
+@media (max-width: 390px) {
+    .containerNav{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+}

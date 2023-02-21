@@ -1,0 +1,26 @@
+.item{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    margin-top: 1%;
+}
+
+.containerImage{
+    width: 130px;
+    height: 150px;
+}
+
+.image{
+    width: 100%;
+}
+
+.containerDatosItem{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}

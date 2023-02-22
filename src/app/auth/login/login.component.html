@@ -1,23 +1,41 @@
 <div class="vh-100 d-flex justify-content-center align-items-center">
-    <div class="col-md-4 p-5 shadow-sm border rounded-3">
-        <h2 class="text-center mb-4 text-primary">Iniciar sesión</h2>
-        <form>
+    <div class="col-md-4 p-5 shadow-sm border rounded-3 bg-info" >
+        <h2 class="text-center mb-4 text-dark">Iniciar sesión</h2>
+        <form [formGroup]="myForm" (ngSubmit)="login()"> 
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <span class="form-text text-danger">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input 
+                type="text" 
+                class="form-control border border-primary" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp"
+                formControlName="username"
+                >
+                <span 
+                class="form-text text-danger"
+                *ngIf="isValidField('username')">
                     Debe de ser de tipo email
                 </span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" class="form-control border border-primary" id="exampleInputPassword1">
-                <span class="form-text text-danger">
-                    Tiene que tener entre 6 y 8 caracteres
+                <input 
+                type="password" 
+                class="form-control border border-primary" 
+                id="exampleInputPassword1"
+                formControlName="password"
+                >
+                <span 
+                class="form-text text-danger"
+                *ngIf="isValidField('password')">
+                    Tiene que tener entre 3 y 8 caracteres
                 </span>
             </div>
             <div class="d-grid">
-                <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+                <button 
+                class="btn btn-primary" 
+                type="submit"
+                >Iniciar Sesión</button>
             </div>
         </form>
         <div class="mt-3">

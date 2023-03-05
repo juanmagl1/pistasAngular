@@ -7,11 +7,10 @@ import { SelectPistaComponent } from './pistas/select-pista/select-pista.compone
 import { HomeModule } from './home/home.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { AuthModule } from './auth/auth.module';
-import { ListaPistasComponent } from './pistas/lista-pistas/lista-pistas.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthService } from './services/auth.service';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +21,8 @@ import { AuthService } from './services/auth.service';
     AppRoutingModule,
     NavbarModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule
   ],
   providers: [
     {

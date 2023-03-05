@@ -24,9 +24,10 @@ const routes: Routes = [
       component:RegisterComponent
     },
     {
-      path:'select/:id',
+      path:'selectPista',
       component:SelectPistaComponent
     },
+    
 ];
 
 @NgModule({

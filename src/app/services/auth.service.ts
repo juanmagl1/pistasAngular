@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, Observable, of, switchMap } from 'rxjs';
 import { TokenResponse } from '../interfaces/token.interfaces';
-import { Login } from '../interfaces/login.interface';
+import { Login, User, UsuarioRegisrado } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,8 @@ import { Login } from '../interfaces/login.interface';
 export class AuthService {
   //Esta es la url de la petición
 url:string="http://localhost:9094/signin";
+
+urlRegister:string="http://localhost:9094/usuario"
   constructor(private cookies:CookieService,private http:HttpClient) { }
 //Nos hemos creado una interfaz para que nos de el usuario le pasamos el usuario completo
 login(user:Login):Observable<Boolean>{
@@ -37,6 +39,18 @@ login(user:Login):Observable<Boolean>{
 
 logout():void{
   this.cookies.delete('token');  
+}
+
+register(user:User):Observable<boolean>{
+  return this.http.post<UsuarioRegisrado>(this.urlRegister,user)
+  .pipe(switchMap(resp=>{
+    return of(true);
+    
+  }),catchError(_error=>{
+    return of(false)
+  })
+  
+  )
 }
 
 }

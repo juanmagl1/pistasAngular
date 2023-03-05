@@ -1,126 +1,111 @@
-<section style="background-color: #DFE1E6; padding: 3rem;">
-  <div class="card text-black" style="border-radius: 25px;">
-        <div class="card-body p-md-5">
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-  
-              <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate</p>
-  
-              <form class="mx-1 mx-md-4" #myForm="ngForm">
-  
-                <div class="d-flex flex-row align-items-center mb-4">
-                  <label class="form-label" for="form3Example1c">Nombre</label>
-                  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                  <div class="form-outline flex-fill mb-0">
-                    <input type="text" 
-                    id="form3Example1c" 
-                    class="form-control"
-                    name="nombre"
-                    [(ngModel)]="initForm.nombre" 
-                    required
-                    />
-                  
-                  </div>
-                </div>
-  
-                <div class="d-flex flex-row align-items-center mb-4">
-                  <label class="form-label" for="form3Example3c">Email</label>
-                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                  <div class="form-outline flex-fill mb-0">
-                    <input 
-                    type="email" 
-                    id="form3Example3c" 
-                    class="form-control" 
-                    name="email"
-                    [(ngModel)]="initForm.email"
-                    />
-                  </div>
-                </div>
-  
-                <div class="d-flex flex-row align-items-center mb-4">
-                  <label class="form-label" for="form3Example4c">Contraseña</label>
-                  <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                  <div class="form-outline flex-fill mb-0">
-                    <input 
-                    type="password" 
-                    id="form3Example4c" 
-                    class="form-control" 
-                    name="pass"
-                    [(ngModel)]="initForm.pass"
-                    />
-                  </div>
-                </div>
-  
-                <div class="d-flex flex-row align-items-center mb-4">
-                  <label class="form-label" for="form3Example4cd">Repita la contraseña</label>
-                  <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                  <div class="form-outline flex-fill mb-0">
-                    
-                    <input 
-                    type="password" 
-                    id="form3Example4cd" 
-                    class="form-control" 
-                    [(ngModel)]="initForm.repeat"
-                    />
-                   
-                  </div>
-                </div>
-  
-                <div class="form-check d-flex justify-content-center mb-5">
-                  <input 
-                  class="form-check-input me-2" 
-                  type="checkbox" 
-                  value="" 
-                  id="form2Example3c" 
-                  name="repeat"
-                  
-                  />
-                  <label class="form-check-label" for="form2Example3">
-                    Acepto los <a href="#!">Términos</a>
-                  </label>
-                </div>
-  
-                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                  <button type="button" class="btn btn-primary btn-lg"  [disabled]="myForm.invalid">Registrarse</button>
-                </div>
-  
-              </form>
-  
-            </div>
-            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-  
-              <!-- <img src="https://www.pistas-padel.es/wp-content/uploads/2021/10/Construccion-pistas-padel-Espana.jpg"
-                class="img-fluid" alt="Sample image" width="100%" height="100%"> -->
-                <img src="../../../assets/pi.jpg"
-                class="img-fluid" alt="Sample image" width="100%" height="100%">
-  
-            </div>
+<div class="vh-100 d-flex justify-content-center align-items-center" style="margin-top: 10%;">
+    <span>Valid</span>
+    <pre>{{myForm.valid}}</pre>
+
+    <span>Pristine</span>
+    <pre>{{myForm.pristine}}</pre>
+
+    <span>Touched</span>
+    <pre>{{myForm.touched}}</pre>
+
+    <span>Value</span>
+    <pre>{{myForm.value | json}}</pre>
+  <div class="col-md-4 p-5 shadow-sm border rounded-3 bg-dark">
+      <h2 class="text-center mb-4 text-light">Iniciar sesión</h2>
+      <form #myForm="ngForm" (ngSubmit)="add()"> 
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label text-light">Username</label>
+              <input 
+              type="text" 
+              class="form-control border border-primary" 
+              aria-describedby="emailHelp"
+              name="username"
+              ngModel
+              minlength="3"
+              >
+              <span 
+              class="form-text text-warning"
+              *ngIf="notValid('username')"
+              >
+                  Tiene que tener una longitud minima de 3 caracteres
+              </span>
           </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label text-light">Pass</label>
+            <input 
+            type="password" 
+            class="form-control border border-primary" 
+            aria-describedby="emailHelp"
+            name="pass"
+            ngModel
+            minlength="3"
+            maxlength="8"
+            >
+            <span 
+            class="form-text text-warning"
+            *ngIf="notValid('pass')"
+            >
+                Tiene que tener una  longitud minima de 3 caracteres y maxima de 8
+            </span>
         </div>
- </div>
- </section>
-      <div class="cont">
-        <div>
-          <span>Valid</span>
-        <pre>{{myForm.valid}}</pre>
-        </div>
-        <div>
-          <span>Pristine</span>
-          <pre>{{myForm.pristine}}</pre>
-        </div>
-        <div>
-          <span>Touched</span>
-          <pre>{{myForm.touched}}</pre>
-        </div>
-        <div>
-          <span>Value</span>
-        <pre>{{myForm.value | json}}</pre>
-        </div>
-        
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label text-light">Nombre</label>
+          <input 
+          type="text" 
+          class="form-control border border-primary" 
+          aria-describedby="emailHelp"
+          name="nombre"
+          ngModel
+          required
+          >
+          <span 
+          class="form-text text-warning"
+          *ngIf="notValid('nombre')"
+          >
+              No Debe de estar vacio
+          </span>
+      </div>
 
-       
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label text-light">Email</label>
+              <input 
+              type="email" 
+              class="form-control border border-primary" 
+              name="email"
+              ngModel
+              [email]="true"
+              >
+              <span 
+              class="form-text text-warning"
+              *ngIf="notValid('email')"
+             >
+                  Tiene que tener un formato de email
+              </span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label text-light">Telefono</label>
+            <input 
+            type="text"
+            minlength="9"
+            maxlength="9" 
+            class="form-control border border-primary" 
+            name="telefono"
+            ngModel
+            >
+            <span 
+            class="form-text text-warning"
+            *ngIf="notValid('telefono')"
+           >
+                Tiene que tener la longitud de 9 caracteres
+            </span>
+        </div>
+          <div class="d-grid">
+              <input 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="myForm.invalid"
+              >Registrarse
+          </div>
+      </form>
 
-        
-        
-      </div>  
-       
+

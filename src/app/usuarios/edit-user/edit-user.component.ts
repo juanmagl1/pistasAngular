@@ -4,6 +4,7 @@ import { Usuario, UsuarioPass } from '../../interfaces/login.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user',
@@ -76,7 +77,14 @@ export class EditUserComponent implements OnInit {
     this.us.nombre=this.myForm.value.nombre
     console.log(this.us.email);
     
-  
+  if (this.myForm.get('fileSource')?.value==null){
+    this.router.navigate(['/'])
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'La imagen es obligatoria!'
+    })
+  }
     
     this.usu.editarUsuario(this.us.username,this.us,this.myForm.get('fileSource')?.value)
     .subscribe({

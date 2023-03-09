@@ -1,13 +1,13 @@
 <div class="row">
     <ul class="containerItem">
       <li class="item" *ngFor="let item of centros">
-        <div class="containerImage">
+        <!-- <div class="containerImage">
           <img class="imaage" src="" alt="">
-        </div>
+        </div> -->
         <div class="containerDatosItem">
-          <h3 class="title">{{item.nombre}}</h3>
+          <h4 class="title">{{item.nombre}}</h4>
           <p class="">{{item.poblacion}}</p>
-          <a [routerLink]="['/select',item.id]" >Reservar</a>
+          <a [routerLink]="['/listaPistas',item.id]" >Ver pistas</a>
         </div>
       </li>
     </ul>

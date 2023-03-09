@@ -3,6 +3,13 @@ export interface Login{
     password:string
 }
 
+export interface Usuario {
+    username: string;
+    nombre:   string;
+    email:    string;
+    telefono: string;
+    role:     string;
+}
 
 export interface User{
     username:string,

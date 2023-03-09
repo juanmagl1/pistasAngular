@@ -10,9 +10,9 @@ import { Login, User, UsuarioRegisrado } from '../interfaces/login.interface';
 })
 export class AuthService {
   //Esta es la url de la petición
-url:string="http://localhost:9094/signin";
+url:string="https://pistasapi-production-a4c0.up.railway.app/signin";
 
-urlRegister:string="http://localhost:9094/usuario"
+urlRegister:string="https://pistasapi-production-a4c0.up.railway.app/usuario"
   constructor(private cookies:CookieService,private http:HttpClient) { }
 //Nos hemos creado una interfaz para que nos de el usuario le pasamos el usuario completo
 login(user:Login):Observable<Boolean>{
@@ -24,8 +24,8 @@ login(user:Login):Observable<Boolean>{
   return this.http.post<TokenResponse>(this.url,user)
   .pipe(switchMap(token=>{
     console.log(token.token);
-    
     this.cookies.set('token',token.token)
+    this.cookies.set('user',user.username)
     return of(true);
   }),catchError(_error=>{
     console.log(_error);
@@ -38,7 +38,8 @@ login(user:Login):Observable<Boolean>{
 }
 
 logout():void{
-  this.cookies.delete('token');  
+  this.cookies.delete('token');
+  this.cookies.delete('user');  
 }
 
 register(user:User):Observable<boolean>{

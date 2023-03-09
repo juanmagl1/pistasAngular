@@ -6,7 +6,7 @@ import { Centro } from '../interfaces/centro';
   providedIn: 'root'
 })
 export class CentrosService {
-url:string='http://localhost:9094/centro'
+url:string='https://pistasapi-production-a4c0.up.railway.app/centro'
   constructor(private http:HttpClient) { }
 
   listadoCentros():Observable<Centro[]>{

@@ -20,7 +20,9 @@
 .containerDatosItem{
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-around;
+    align-content: center;
+    margin:1%
 }

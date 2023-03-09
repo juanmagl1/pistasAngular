@@ -1,15 +1,4 @@
 <div class="vh-100 d-flex justify-content-center align-items-center" style="margin-top: 10%;">
-    <span>Valid</span>
-    <pre>{{myForm.valid}}</pre>
-
-    <span>Pristine</span>
-    <pre>{{myForm.pristine}}</pre>
-
-    <span>Touched</span>
-    <pre>{{myForm.touched}}</pre>
-
-    <span>Value</span>
-    <pre>{{myForm.value | json}}</pre>
   <div class="col-md-4 p-5 shadow-sm border rounded-3 bg-dark">
       <h2 class="text-center mb-4 text-light">Iniciar sesión</h2>
       <form #myForm="ngForm" (ngSubmit)="add()"> 

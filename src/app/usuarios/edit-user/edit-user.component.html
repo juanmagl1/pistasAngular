@@ -1,0 +1,73 @@
+<div class="vh-100 d-flex justify-content-center align-items-center" style="margin-top: 10%;">
+    <div class="col-md-4 p-5 shadow-sm border rounded-3 bg-dark">
+        <h2 class="text-center mb-4 text-light">Modificar Perfil</h2>
+        <form [formGroup]="myForm"> 
+            <div class="mb-3" hidden>
+                <label for="exampleInputEmail1" class="form-label text-light">Username</label>
+                <input 
+                type="text" 
+                class="form-control border border-primary" 
+                aria-describedby="emailHelp"
+                name="username"
+                formControlName="username"
+                >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label text-light">Pass</label>
+              <input 
+              type="password" 
+              class="form-control border border-primary" 
+              aria-describedby="emailHelp"
+              name="pass"
+              formControlName="pass"
+              >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label text-light">Nombre</label>
+            <input 
+            type="text" 
+            class="form-control border border-primary" 
+            aria-describedby="emailHelp"
+            name="nombre"
+            formControlName="nombre"
+            >
+        </div>
+        <div class="mb-3" hidden>
+            <label for="exampleInputEmail1" class="form-label text-light">Role</label>
+            <input 
+            type="text" 
+            class="form-control border border-primary" 
+            aria-describedby="emailHelp"
+            name="nombre"
+            formControlName="role"
+            >
+        </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label text-light">Email</label>
+                <input 
+                type="email" 
+                class="form-control border border-primary" 
+                name="email"
+                formControlName="email"
+                >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label text-light">Telefono</label>
+              <input 
+              type="text"
+             formControlName="telefono"
+              class="form-control border border-primary" 
+             
+              >
+          </div>
+            <div class="d-grid">
+                <input 
+                type="submit" 
+                class="btn btn-primary"
+                value="Editar"
+                >
+            </div>
+        </form>
+  
+  
+  

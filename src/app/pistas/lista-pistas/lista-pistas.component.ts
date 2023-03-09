@@ -1,9 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Pista } from 'src/app/interfaces/pistas.interface';
+import { PistaService } from '../../services/pista.service';
 
 @Component({
   selector: 'app-lista-pistas',
-  templateUrl: './lista-pistas.component.html'
+  templateUrl: './lista-pistas.component.html',
+  styleUrls:['./lista-pistas.component.css']
 })
-export class ListaPistasComponent {
+export class ListaPistasComponent implements OnInit {
+  
+  constructor(private pista:PistaService,private route:ActivatedRoute){}
+  id:string=this.route.snapshot.params['id']
+  pistas!:Pista[]
+  ngOnInit() {
+    this.pista.obtenerPistas(this.id)
+    .subscribe({
+      next:(val)=>{
+        this.pistas=val
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
 
 }

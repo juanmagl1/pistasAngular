@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home/home.component';
+import { ListaPistasComponent } from './pistas/lista-pistas/lista-pistas.component';
 import { SelectPistaComponent } from './pistas/select-pista/select-pista.component';
 
 const routes: Routes = [
@@ -24,9 +25,14 @@ const routes: Routes = [
       component:RegisterComponent
     },
     {
-      path:'selectPista',
+      path:'listaPistas/:id',
+      component:ListaPistasComponent
+    },
+    {
+      path:'listaPistas/:id/selectPista/:idPista',
       component:SelectPistaComponent
     },
+  { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule) },
     
 ];
 

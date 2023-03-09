@@ -23,6 +23,8 @@
     "@fullcalendar/daygrid": "^6.1.4",
     "@fullcalendar/interaction": "^6.1.4",
     "@fullcalendar/timegrid": "^6.1.4",
+    "angular-cli-ghpages": "^1.0.5",
+    "moment": "^2.29.4",
     "ngx-cookie-service": "^15.0.0",
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",

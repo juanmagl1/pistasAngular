@@ -1,15 +1,42 @@
-<div class="containerImage">
-    <img class="image" src="" alt="">
-</div>
-
-<div class="containerItem">
-    <div class="nombre">
-        <h1>oooooooooooooo</h1>
+    <div class="container">
+        <p class="calendario">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+        </p>
+        
+        <form [formGroup]="myForm">
+            <h3>Reservar la pista</h3>
+            <div>
+            <label for="exampleInputEmail1" class="form-label">username</label>
+                <input type="text" 
+                class="form-control border border-primary" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp"
+                formControlName="username">
+            </div>
+            <div>
+                <label for="exampleInputEmail1" class="form-label">Pista</label>
+                    <input type="text" 
+                    class="form-control border border-primary" 
+                    id="exampleInputEmail1" 
+                    aria-describedby="emailHelp"
+                    formControlName="pista">
+            </div>
+            <div>
+                <label for="exampleInputEmail1" class="form-label">Horario</label>
+                    <input type="text" 
+                    class="form-control border border-primary" 
+                    id="exampleInputEmail1" 
+                    aria-describedby="emailHelp"
+                    formControlName="horario">
+            </div>
+            <div>
+                <label for="exampleInputEmail1" class="form-label">Fecha</label>
+                    <input type="text" 
+                    class="form-control border border-primary" 
+                    id="exampleInputEmail1" 
+                    aria-describedby="emailHelp"
+                    formControlName="fecha">
+            </div>
+            <button (click)="addReserva()" type="button" class="btn btn-dark">Dark</button>
+            </form>
     </div>
-    <div class="boton">
-        <button>ooooooooooo</button>
-    </div>
-    <p class="telefono">
-        <full-calendar [options]="calendarOptions"></full-calendar>
-    </p>
-</div>

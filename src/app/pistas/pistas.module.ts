@@ -5,6 +5,7 @@ import { SelectPistaComponent } from './select-pista/select-pista.component';
 import { RouterModule } from '@angular/router';
 import { ListaPistasComponent } from './lista-pistas/lista-pistas.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
   imports: [
     CommonModule,
     RouterModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ReactiveFormsModule
   ],
   exports: [
     ListaPistasComponent,

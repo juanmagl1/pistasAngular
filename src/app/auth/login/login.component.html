@@ -12,9 +12,9 @@
                 formControlName="username"
                 >
                 <span 
-                class="form-text text-danger"
+                class="form-text text-warning"
                 *ngIf="isValidField('username')">
-                    Debe de ser de tipo email
+                    El username es obligatorio
                 </span>
             </div>
             <div class="mb-3">
@@ -26,15 +26,16 @@
                 formControlName="password"
                 >
                 <span 
-                class="form-text text-danger"
+                class="form-text text-warning"
                 *ngIf="isValidField('password')">
-                    Tiene que tener entre 3 y 8 caracteres
+                La contraseña es obligatoria
                 </span>
             </div>
             <div class="d-grid">
                 <button 
                 class="btn btn-primary" 
                 type="submit"
+                [disabled]="myForm.invalid"
                 >Iniciar Sesión</button>
             </div>
         </form>

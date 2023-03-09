@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/login.interface';
 import { CookieService } from 'ngx-cookie-service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,12 +14,12 @@ export class EditUserComponent implements OnInit {
   constructor(private usu:UsuarioService,private cookies:CookieService,private fb:FormBuilder){}
   usernameId:string=this.cookies.get('user');
   myForm:FormGroup=this.fb.group({
-    telefono:[''],
-    username:[''],
-    pass:[''],
-    nombre:[''],
-    email:[''],
-    role:['']
+    telefono:['',[Validators.required]],
+    username:['',[Validators.required]],
+    pass:['',[Validators.required]],
+    nombre:['',[Validators.required]],
+    email:['',[Validators.required]],
+    role:['',[Validators.required]]
   })
   ngOnInit(): void {
     if (this.usernameId!==null){
@@ -32,7 +32,6 @@ export class EditUserComponent implements OnInit {
             email:resp.email,
             username:resp.username,
             role:resp.role,
-            pass:'',
             nombre:resp.nombre
           })
         },

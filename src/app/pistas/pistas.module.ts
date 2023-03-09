@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { ListaPistasComponent } from './lista-pistas/lista-pistas.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {TableModule} from 'primeng/table';
+
 
 
 
@@ -19,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     FullCalendarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   exports: [
     ListaPistasComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CentrosService } from 'src/app/services/centros.service';
 import { Centro } from '../../interfaces/centro';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'

@@ -15,4 +15,6 @@ obtenerUsuario(username:string):Observable<Usuario>{
   console.log(`${this.url}/${username}`);
   return this.http.get<Usuario>(`${this.url}/${username}`)
 }
+
+
 }

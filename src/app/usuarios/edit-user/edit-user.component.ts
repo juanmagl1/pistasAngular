@@ -32,7 +32,7 @@ export class EditUserComponent implements OnInit {
     nombre:['',[Validators.required]],
     email:['',[Validators.required]],
     role:['',[Validators.required]],
-    fotoPerfil:[''],
+    fotoPerfil:['',[Validators.required]],
     fileSource:['']
   })
   ngOnInit() {
@@ -90,10 +90,13 @@ export class EditUserComponent implements OnInit {
     })
   }
   onFileSelected(event:any){
-    const file:File = event.target.files[0];
-    this.myForm.patchValue({
-      fileSource: file
-    });
+    if(event.target.files.length>0){
+      const file:File = event.target.files[0];
+      this.myForm.patchValue({
+        fileSource: file
+    }
+    );
   }
 }
 
+}

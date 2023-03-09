@@ -5,13 +5,15 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home/home.component';
 import { ListaPistasComponent } from './pistas/lista-pistas/lista-pistas.component';
 import { SelectPistaComponent } from './pistas/select-pista/select-pista.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path:'',
     component:HomeComponent,
     pathMatch:'full'
-  }  
+  }
+    
   ,{
       path:'home',
       component:HomeComponent,
@@ -30,9 +32,15 @@ const routes: Routes = [
     },
     {
       path:'listaPistas/:id/selectPista/:idPista',
+      canActivate:[AuthGuard],
       component:SelectPistaComponent
     },
   { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule) },
+  {
+    path:'**',
+    component:HomeComponent,
+    pathMatch:'full'
+  }
     
 ];
 

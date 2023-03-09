@@ -10,6 +10,7 @@ import { Centro } from '../../interfaces/centro';
 export class HomeComponent implements OnInit {
 centros!:Centro[];
 ngOnInit(): void {
+  //Cuando carga el componente que nos muestre todos los centros
 this.service.listadoCentros()
 .subscribe({
   next:(resp)=>{
@@ -23,6 +24,7 @@ this.service.listadoCentros()
 }
 
 constructor(private service:CentrosService){}
+//Metodo para que busque por centros y si se lo mete vacio, que los muestre todos
  buscaCentros(query:string){
   if (query===''){
     this.service.listadoCentros()

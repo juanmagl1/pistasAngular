@@ -1,7 +1,7 @@
 <nav class="containerNav bg-dark" >
   <a [routerLink]="['/home']">
     <div class="containerLogo">
-      <img class="containerLogo-logo" src="../../../assets/logo.png" alt="imagen logo">
+      <img class="containerLogo-logo" src="assets/logo.png" alt="imagen logo">
   </div>
   </a>
     
@@ -15,9 +15,9 @@
         </svg>
       </a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li *ngIf="modificar"><a class="dropdown-item" [routerLink]="['/login']" href="#">Iniciar sesión</a></li>
-        <li *ngIf="!modificar"><a class="dropdown-item" [routerLink]="['/usuarios/edit']" href="#">Modificar Perfil</a></li>
-        <li *ngIf="modificar"><a class="dropdown-item" [routerLink]="['/register']" href="#">Registrarse</a></li>
+        <li *ngIf="isLoggedIn$|async"><a class="dropdown-item" [routerLink]="['/login']" href="#">Iniciar sesión</a></li>
+        <li *ngIf="!(isLoggedIn$|async)"><a class="dropdown-item" [routerLink]="['/usuarios/edit']" href="#">Modificar Perfil</a></li>
+        <li *ngIf="isLoggedIn$|async"><a class="dropdown-item" [routerLink]="['/register']" href="#">Registrarse</a></li>
         <li><a class="dropdown-item" (click)="logout()"  [routerLink]="['/login']" href="#">Cerrar sesión</a></li>
       </ul>
     </div>

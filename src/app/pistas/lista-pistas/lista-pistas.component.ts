@@ -11,9 +11,11 @@ import { PistaService } from '../../services/pista.service';
 export class ListaPistasComponent implements OnInit {
   
   constructor(private pista:PistaService,private route:ActivatedRoute){}
+  //El parametro del id del centro
   id:string=this.route.snapshot.params['id']
   pistas!:Pista[]
   ngOnInit() {
+    //Peticion para que nos devuelva las pistas
     this.pista.obtenerPistas(this.id)
     .subscribe({
       next:(val)=>{

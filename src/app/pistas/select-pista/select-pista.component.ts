@@ -32,16 +32,21 @@ export class SelectPistaComponent implements OnInit {
     this.pintar()
     
   }
-
+//Creamos el formulario  reactivo con los valores
 myForm:FormGroup=this.fb.group({
   username:[''],
   pista:[this.id],
   horario:[''],
   fecha:['']
 })
-
+//Creamos el calendario con las opciones definidas
 calendarOptions:CalendarOptions={
   initialView:'timeGridFourDay',
+  validRange:function(nowDate){
+    return{
+      start:nowDate
+    }
+  },
   plugins:[timeGridPlugin,interactionPlugin],
   selectable:true,
   defaultTimedEventDuration:"01:00",
@@ -72,12 +77,13 @@ eventColor:'red'
 }
 
 
-
+//Evento para pintar el calendario
 pintar(){
   this.pist.verReservasPorPista(this.id)
   .subscribe({
     next:(respuesta)=>{
       this.reserva=respuesta
+      //Se mete una promesa dentro de otra porque son asincronas y sino no espera a que acabe una para que empiece otra
       this.calendarOptions.events=this.cargarEventos()         
     },
     error:(err)=>{
@@ -87,28 +93,31 @@ pintar(){
   })
   
 }
-
+//Evento que carga los eventos en el calendario
 cargarEventos(){
   let ocupado=[]
   for(let i=0;i<this.reserva.length;i++){
+    //En el id horario, cuando llega al guion separa y lo convierte a array
      let hora=this.reserva[i].id_horario.split('-')
+     //Creamos el evento
      let evento={
       title:this.reserva[i].username,
       start:`${this.reserva[i].fecha} ${hora[0]}:00`
      }
      ocupado.push(evento);
     
-    console.log(ocupado);
     
   }
 return ocupado
 }
-
+//Metodo para seleccionar la fecha
 seleccionarFecha(selectInfo:any){
+  //Nos hemos instalado la libreria format para que nos de la fecha del dia de hoy con el formato ese 
   const dat=moment().format('YYYYY-MM-DD')
   const formato=selectInfo.dateStr
   //El split coge el caracter que le pasamos lo quita y mete una separación donde esté ese caracter
   const fecha=formato.split('T')
+  //Le cambiamos los valores al formulario
   this.myForm.controls['fecha'].setValue(fecha[0])
   const hor=fecha[1].split(':')
   this.myForm.controls['horario'].setValue(hor[0])
@@ -116,7 +125,7 @@ seleccionarFecha(selectInfo:any){
   this.myForm.controls['username'].setValue(name)
   
 }
-
+//Metodo para añadir la reserva
 addReserva(){
   let username=this.myForm.controls['username'].value
   let id_pista:number=parseInt(this.id)

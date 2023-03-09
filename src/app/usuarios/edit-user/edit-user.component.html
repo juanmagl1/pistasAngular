@@ -1,7 +1,7 @@
 <div class="vh-100 d-flex justify-content-center align-items-center" style="margin-top: 10%;">
     <div class="col-md-4 p-5 shadow-sm border rounded-3 bg-dark">
         <h2 class="text-center mb-4 text-light">Modificar Perfil</h2>
-        <form [formGroup]="myForm"> 
+        <form [formGroup]="myForm" enctype="multipart/form-data" (ngSubmit)="save()"> 
             <div class="mb-3" hidden>
                 <label for="exampleInputEmail1" class="form-label text-light">Username</label>
                 <input 
@@ -11,6 +11,7 @@
                 name="username"
                 formControlName="username"
                 >
+               
             </div>
             <div class="mb-3" hidden>
               <label for="exampleInputEmail1" class="form-label text-light">Pass</label>
@@ -18,7 +19,6 @@
               type="password" 
               class="form-control border border-primary" 
               aria-describedby="emailHelp"
-              name="pass"
               formControlName="pass"
               >
           </div>
@@ -31,6 +31,11 @@
             name="nombre"
             formControlName="nombre"
             >
+            <span 
+            class="form-text text-warning"
+            *ngIf="isValidField('nombre')">
+            El nombre es obligatorio
+            </span>
         </div>
         <div class="mb-3" hidden>
             <label for="exampleInputEmail1" class="form-label text-light">Role</label>
@@ -50,6 +55,11 @@
                 name="email"
                 formControlName="email"
                 >
+                <span 
+            class="form-text text-warning"
+            *ngIf="isValidField('email')">
+            El email tiene que ser tipo email
+            </span>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label text-light">Telefono</label>
@@ -59,7 +69,23 @@
               class="form-control border border-primary" 
              
               >
+              <span 
+            class="form-text text-warning"
+            *ngIf="isValidField('telefono')">
+            El telefono tiene que tener 9 digitos
+            </span>
           </div>
+
+          <div class="col-sm-9">
+            <label for="exampleInputPassword1" class="form-label text-light">Foto</label>
+            <input type="file" 
+            class="form-control" 
+            formControlName="fotoPerfil" 
+            name="fotoPerfil" 
+            (change)="onFileSelected($event)" 
+            required/>   
+              </div>
+              <br>
             <div class="d-grid">
                 <input 
                 type="submit" 
@@ -67,6 +93,8 @@
                 value="Editar"
                 >
             </div>
+            <br>
+            <a [routerLink]="['/']" class="btn btn-primary d d-grid">Volver</a>
         </form>
   
   

@@ -11,12 +11,12 @@ import {Router } from '@angular/router';
 })
 export class LoginComponent {
 constructor(private authService:AuthService,private fb:FormBuilder,private router:Router){ }
-
+//Creamos el formulario reactivo con las restricciones
 myForm:FormGroup=this.fb.group({
   username:['',Validators.required],
   password:['',[Validators.required]]
 })
-
+//Llamamos al metodo login
 login(){
 // usuario:Login=this.myForm.value
 this.authService.login(this.myForm.value)
@@ -52,7 +52,7 @@ this.authService.login(this.myForm.value)
   }
 })
 }
-
+//Metodo para que nos muestre los errores del formulario
 isValidField(campo:string){
   return this.myForm.controls[campo].errors&&
   this.myForm.controls[campo].touched

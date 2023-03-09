@@ -15,9 +15,9 @@
         </svg>
       </a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li *ngIf="isLoggedIn$|async"><a class="dropdown-item" [routerLink]="['/login']" href="#">Iniciar sesión</a></li>
-        <li *ngIf="!(isLoggedIn$|async)"><a class="dropdown-item" [routerLink]="['/usuarios/edit']" href="#">Modificar Perfil</a></li>
-        <li *ngIf="isLoggedIn$|async"><a class="dropdown-item" [routerLink]="['/register']" href="#">Registrarse</a></li>
+        <li *ngIf="!(isLoggedIn$|async)"><a class="dropdown-item" [routerLink]="['/login']" href="#">Iniciar sesión</a></li>
+        <li *ngIf="(isLoggedIn$|async)"><a class="dropdown-item" [routerLink]="['/usuarios/edit']" href="#">Modificar Perfil</a></li>
+        <li *ngIf="!(isLoggedIn$|async)"><a class="dropdown-item" [routerLink]="['/register']" href="#">Registrarse</a></li>
         <li><a class="dropdown-item" (click)="logout()"  [routerLink]="['/login']" href="#">Cerrar sesión</a></li>
       </ul>
     </div>

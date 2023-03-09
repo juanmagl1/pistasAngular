@@ -75,27 +75,35 @@ export class EditUserComponent implements OnInit {
     this.us.username=this.myForm.value.username
     this.us.role=this.myForm.value.role
     this.us.nombre=this.myForm.value.nombre
-    console.log(this.us.email);
     
-  if (this.myForm.get('fileSource')?.value==null){
-    this.router.navigate(['/'])
+  if (this.myForm.get('fileSource')?.value===''){
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'La imagen es obligatoria!'
     })
-  }
-    
+    this.router.navigate(['/'])
+  }else{
     this.usu.editarUsuario(this.us.username,this.us,this.myForm.get('fileSource')?.value)
     .subscribe({
       next:(val)=>{
         this.router.navigate(['/'])
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       error:(err)=>{
         console.log(err);
         
       }
     })
+  }
+    
+  
   }
   onFileSelected(event:any){
     if(event.target.files.length>0){

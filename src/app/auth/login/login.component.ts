@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from 'src/app/interfaces/login.interface';
 import Swal from 'sweetalert2';
@@ -9,8 +9,10 @@ import {Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 constructor(private authService:AuthService,private fb:FormBuilder,private router:Router){ }
+  ngOnInit(): void {
+  }
 //Creamos el formulario reactivo con las restricciones
 myForm:FormGroup=this.fb.group({
   username:['',Validators.required],
@@ -40,6 +42,7 @@ this.authService.login(this.myForm.value)
       icon: 'success',
       title: 'Signed in successfully'
     })
+    this.ngOnInit()
     this.router.navigate(['/'])
   }else{
     Swal.fire({
